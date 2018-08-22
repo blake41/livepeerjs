@@ -45,6 +45,20 @@ LivepeerSDK({ ... }).then(async (sdk) => {
   // => string representation of some absurdly high number, maybe "9999999999999999999999" or something like that :)
 })
 ```
+To use with a testnet please instantiate with the following params:
+```
+const provider = "https://rinkeby.infura.io" #or your testnet of choice
+const controllerAddress = "0x37dC71366Ec655093b9930bc816E16e6b587F968"
+
+LivepeerSDK({ provider, controllerAddress }).then(async sdk => {
+  const { rpc } = sdk
+  
+  const jobs = await rpc.getJobs({ broadcaster: '0xa452a1824ac4609Ab93d8b8a442b04847a6Aee01' })
+  
+  console.log(jobs)
+})
+```
+
 
 The following section details the rpc API's function signatures and typedefs.
 
